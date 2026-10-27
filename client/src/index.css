@@ -1,0 +1,475 @@
+/* =====================================================================
+   CAMPUS EVENTS — UNIVERSITY DESIGN SYSTEM
+   Core Palette:
+   - Primary Background: #F7FBFD (70%)
+   - Secondary Surface:  #D6E6EF (15–20%)
+   - Accent:             #7FA6B8 (5–10%)
+   - Primary Dark:       #2A3E4B (Controlled contrast / typography)
+   ===================================================================== */
+
+:root {
+  /* Color Tokens - Light Mode */
+  --bg-primary: #F7FBFD;
+  --bg-surface: #FFFFFF;
+  --bg-secondary: #D6E6EF;
+  --bg-secondary-light: #E8F2F7;
+  --bg-muted: #EBF3F7;
+  
+  --border-subtle: #DCE7ED;
+  --border-strong: #BDD3DE;
+  --border-accent: #7FA6B8;
+
+  --text-primary: #2A3E4B;
+  --text-secondary: #586F7D;
+  --text-muted: #7A93A2;
+  --text-inverse: #FFFFFF;
+
+  --accent-base: #7FA6B8;
+  --accent-hover: #6D94A6;
+  --accent-light: #E3EFF4;
+  --accent-contrast: #FFFFFF;
+
+  --dark-base: #2A3E4B;
+  --dark-hover: #21323D;
+
+  /* Semantic Feedback */
+  --status-success-bg: #EAF4EE;
+  --status-success-text: #21674A;
+  --status-success-border: #B7DEC8;
+
+  --status-warning-bg: #FCF4E8;
+  --status-warning-text: #8A551E;
+  --status-warning-border: #F3DCB7;
+
+  --status-error-bg: #FBEFEF;
+  --status-error-text: #962828;
+  --status-error-border: #F2C3C3;
+
+  --status-info-bg: #E8F2F7;
+  --status-info-text: #28556D;
+  --status-info-border: #BED8E5;
+
+  /* Typography */
+  --font-main: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Layout Spacing */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  /* Transitions */
+  --trans-fast: 150ms cubic-bezier(0.22, 1, 0.36, 1);
+  --trans-base: 220ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Shadows (Subtle, institutional) */
+  --shadow-subtle: 0 1px 3px rgba(42, 62, 75, 0.05);
+  --shadow-card: 0 2px 6px rgba(42, 62, 75, 0.06);
+  --shadow-modal: 0 12px 36px rgba(42, 62, 75, 0.12);
+}
+
+/* Dark Mode Tokens */
+[data-theme="dark"] {
+  --bg-primary: #0D161C;
+  --bg-surface: #15222B;
+  --bg-secondary: #1D303C;
+  --bg-secondary-light: #233947;
+  --bg-muted: #1A2B35;
+
+  --border-subtle: #253947;
+  --border-strong: #334E60;
+  --border-accent: #7FA6B8;
+
+  --text-primary: #EDF5FA;
+  --text-secondary: #A0B9C7;
+  --text-muted: #748D9C;
+  --text-inverse: #0D161C;
+
+  --accent-base: #7FA6B8;
+  --accent-hover: #96B9CA;
+  --accent-light: #1D303C;
+  --accent-contrast: #0D161C;
+
+  --dark-base: #EDF5FA;
+  --dark-hover: #D6E6EF;
+
+  --status-success-bg: #11281E;
+  --status-success-text: #69C99E;
+  --status-success-border: #1E4633;
+
+  --status-warning-bg: #2C2012;
+  --status-warning-text: #F1B36D;
+  --status-warning-border: #4D371E;
+
+  --status-error-bg: #2E1515;
+  --status-error-text: #F08080;
+  --status-error-border: #542525;
+
+  --status-info-bg: #142833;
+  --status-info-text: #8EC2DC;
+  --status-info-border: #234557;
+
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.25);
+  --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.35);
+  --shadow-modal: 0 12px 40px rgba(0, 0, 0, 0.55);
+}
+
+/* Universal Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+/* Typography Defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+h1 { font-size: 1.85rem; }
+h2 { font-size: 1.45rem; }
+h3 { font-size: 1.15rem; }
+h4 { font-size: 1rem; }
+
+p {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Institutional Form Inputs */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.input-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+.input-field {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+  transition: border-color var(--trans-fast), box-shadow var(--trans-fast);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--text-primary);
+  box-shadow: 0 0 0 1px var(--text-primary);
+}
+
+.input-field::placeholder {
+  color: var(--text-muted);
+}
+
+.input-field:disabled {
+  background-color: var(--bg-secondary-light);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+textarea.input-field {
+  height: auto;
+  min-height: 96px;
+  padding: 10px 14px;
+  resize: vertical;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 18px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: all var(--trans-fast);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--dark-base);
+  color: #FFFFFF;
+}
+
+.btn-primary:hover:not(:disabled) {
+  opacity: 0.92;
+}
+
+[data-theme="dark"] .btn-primary {
+  background-color: var(--accent-base);
+  color: #0D161C;
+}
+
+.btn-secondary {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--border-strong);
+}
+
+.btn-accent {
+  background-color: var(--accent-base);
+  color: #FFFFFF;
+}
+
+.btn-accent:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background-color: var(--bg-secondary-light);
+}
+
+.btn-danger {
+  background-color: var(--status-error-bg);
+  color: var(--status-error-text);
+  border: 1px solid var(--status-error-border);
+}
+
+.btn-danger:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Institutional Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.badge-published, .badge-active, .badge-approved, .badge-verified, .badge-attended {
+  background-color: var(--status-success-bg);
+  color: var(--status-success-text);
+  border: 1px solid var(--status-success-border);
+}
+
+.badge-pending {
+  background-color: var(--status-warning-bg);
+  color: var(--status-warning-text);
+  border: 1px solid var(--status-warning-border);
+}
+
+.badge-rejected, .badge-cancelled, .badge-suspended, .badge-revoked {
+  background-color: var(--status-error-bg);
+  color: var(--status-error-text);
+  border: 1px solid var(--status-error-border);
+}
+
+.badge-draft, .badge-closed, .badge-completed, .badge-registered {
+  background-color: var(--status-info-bg);
+  color: var(--status-info-text);
+  border: 1px solid var(--status-info-border);
+}
+
+/* Institutional Data Tables */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.875rem;
+}
+
+.table th {
+  padding: 12px 16px;
+  background-color: var(--bg-secondary-light);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--border-strong);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  vertical-align: middle;
+}
+
+.table tbody tr:hover {
+  background-color: var(--bg-primary);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Institutional Panels & Cards */
+.panel {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.panel-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Utilities */
+.divider {
+  height: 1px;
+  background-color: var(--border-subtle);
+  margin: 24px 0;
+}
+
+/* Responsive Media Queries */
+.sidebar-desktop {
+  display: flex;
+}
+
+.mobile-menu-btn {
+  display: none !important;
+}
+
+.gateway-row:hover {
+  background-color: var(--bg-secondary-light);
+}
+
+@media (max-width: 900px) {
+  .sidebar-desktop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+  }
+
+  .sidebar-mobile-open {
+    transform: translateX(0) !important;
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex !important;
+  }
+
+  .gateway-row {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  main {
+    padding: 16px 14px !important;
+  }
+
+  .panel {
+    padding: 16px !important;
+  }
+
+  .btn {
+    padding: 0 14px;
+    height: 38px;
+  }
+
+  h1 { font-size: 1.5rem !important; }
+  h2 { font-size: 1.25rem !important; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
